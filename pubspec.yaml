@@ -19,5 +19,6 @@ dependencies:
   json_annotation: ^2.2.0
   json_serializable: ^2.0.0
   path: ^1.6.2
+  quartet: ^0.1.1
 dev_dependencies:
   test: ^1.5.1

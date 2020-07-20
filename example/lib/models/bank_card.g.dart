@@ -1,16 +1,16 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'card.dart';
+part of 'bank_card.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Card _$CardFromJson(Map<String, dynamic> json) {
-  return Card()
+BankCard _$BankCardFromJson(Map<String, dynamic> json) {
+  return BankCard()
     ..no = json['no'] as String
     ..name = json['name'] as String;
 }
 
-Map<String, dynamic> _$CardToJson(Card instance) =>
+Map<String, dynamic> _$BankCardToJson(BankCard instance) =>
     <String, dynamic>{'no': instance.no, 'name': instance.name};

@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'test_dir/profile.dart';
-import "card.dart";
+import "bank_card.dart";
 part 'user.g.dart';
 
 @JsonSerializable()
@@ -11,9 +11,10 @@ class User {
     @JsonKey(name: '+1') int loved;
     String name;
     User father;
+    BankCard bankCard;
     List<User> friends;
     List<String> keywords;
-    List<Card> bankCards;
+    List<BankCard> bankCards;
     num age;
     
     factory User.fromJson(Map<String,dynamic> json) => _$UserFromJson(json);

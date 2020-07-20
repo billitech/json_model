@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 import 'build_runner.dart' as br;
+import 'package:quartet/quartet.dart';
 
 const tpl="import 'package:json_annotation/json_annotation.dart';\n%t\npart '%s.g.dart';\n\n@JsonSerializable()\nclass %s {\n    %s();\n\n    %s\n    factory %s.fromJson(Map<String,dynamic> json) => _\$%sFromJson(json);\n    Map<String, dynamic> toJson() => _\$%sToJson(this);\n}\n";
 
@@ -63,12 +64,12 @@ bool walk(String srcDir, String distDir, String tag ) {
         }else {
           attrs.write(getType(v, set, name, tag));
           attrs.write(" ");
-          attrs.write(key);
+          attrs.write(camelCase(key));
           attrs.writeln(";");
         }
         attrs.write("    ");
       });
-      String  className=name[0].toUpperCase()+name.substring(1);
+      String  className=name[0].toUpperCase()+camelCase(name.substring(1));
       var dist=format(tpl,[name,className,className,attrs.toString(),
       className,className,className]);
       var _import=set.join(";\r\n");
@@ -112,14 +113,14 @@ String getType(v,Set<String> set,String current, tag){
       if(type.toLowerCase()!=current&&!isBuiltInType(type)) {
         set.add('import "$type.dart"');
       }
-      return "List<${changeFirstChar(type)}>";
+      return "List<${changeFirstChar(camelCase(type))}>";
 
     }else if(v.startsWith(tag)){
       var fileName=changeFirstChar(v.substring(1),false);
       if(fileName.toLowerCase()!=current) {
         set.add('import "$fileName.dart"');
       }
-      return changeFirstChar(fileName);
+      return changeFirstChar(camelCase(fileName));
     }else if(v.startsWith("@")){
       return v;
     }

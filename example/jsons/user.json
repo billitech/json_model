@@ -4,8 +4,9 @@
   "@JsonKey(name: '+1') int": "loved",
   "name": "wendux",
   "father":"$user",
+  "bank_card":"$bank_card",
   "friends":"$[]user",
   "keywords":"$[]String",
-  "bankCards":"$[]card",
+  "bank_cards":"$[]bank_card",
   "age": 20
 }

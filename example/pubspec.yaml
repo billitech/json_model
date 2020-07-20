@@ -7,6 +7,12 @@ homepage:
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
+dependencies:
+  json_annotation:
+
+
 dev_dependencies:
+  json_serializable:
+  build_runner:
   json_model:
     path: ../
