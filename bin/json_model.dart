@@ -62,6 +62,10 @@ bool walk(String srcDir, String distDir, String tag ) {
           attrs.write(v);
           attrs.writeln(";");
         }else {
+          if(camelCase(key) != key) {
+            attrs.write('@JsonKey(name: "$key")');
+            attrs.write(" ");
+          }
           attrs.write(getType(v, set, name, tag));
           attrs.write(" ");
           attrs.write(camelCase(key));
@@ -71,7 +75,7 @@ bool walk(String srcDir, String distDir, String tag ) {
       });
       String  className=name[0].toUpperCase()+camelCase(name.substring(1));
       var dist=format(tpl,[name,className,className,attrs.toString(),
-      className,className,className]);
+        className,className,className]);
       var _import=set.join(";\r\n");
       _import+=_import.isEmpty?"":";";
       dist=dist.replaceFirst("%t",_import );

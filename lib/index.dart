@@ -60,6 +60,10 @@ bool walk(String srcDir, String distDir, String tag ) {
           attrs.write(v);
           attrs.writeln(";");
         }else {
+          if(camelCase(key) != key) {
+            attrs.write('@JsonKey(name: "$key")');
+            attrs.write(" ");
+          }
           attrs.write(getType(v, set, name, tag));
           attrs.write(" ");
           attrs.write(camelCase(key));
